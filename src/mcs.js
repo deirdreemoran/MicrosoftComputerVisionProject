@@ -6,7 +6,7 @@
           var payload = {url: null};
           payload.url = document.getElementById('url').value;
           document.getElementById("myimg").src = payload.url;
-          req.open("POST", "https://westus.api.cognitive.microsoft.com/vision/v1.0/analyze?visualFeatures=Categories,Tags,Description,Faces,ImageType,Color,Adult&details=Celebrities&language=en", true);
+          req.open("POST", "https://westcentralus.api.cognitive.microsoft.com/vision/v1.0/analyze?visualFeatures=Categories,Tags,Description,Faces,ImageType,Color,Adult&details=Celebrities&language=en", true);
 		  req.setRequestHeader('Content-Type', 'application/json');
 		  req.setRequestHeader('Ocp-Apim-Subscription-Key', '6e12c5f8dfe44e9d954490e5d5d4c009');
 		  req.addEventListener('load',function(){

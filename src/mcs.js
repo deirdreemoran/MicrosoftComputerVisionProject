@@ -8,7 +8,7 @@
           document.getElementById("myimg").src = payload.url;
           req.open("POST", "https://westus.api.cognitive.microsoft.com/vision/v1.0/analyze?visualFeatures=Categories,Tags,Description,Faces,ImageType,Color,Adult&details=Celebrities&language=en", true);
 		  req.setRequestHeader('Content-Type', 'application/json');
-		  req.setRequestHeader('Ocp-Apim-Subscription-Key', '15e1fca72dbd47568244d1a8fe6df511');
+		  req.setRequestHeader('Ocp-Apim-Subscription-Key', '6e12c5f8dfe44e9d954490e5d5d4c009');
 		  req.addEventListener('load',function(){
 		      	if(req.status >= 200 && req.status < 400){
 	      	   	    var response = JSON.parse(req.responseText);

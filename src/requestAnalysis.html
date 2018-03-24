@@ -65,19 +65,20 @@
 		<br><br>To begin, we need to communicate with our HTML code in order to send the image we 
 		would like to have analyzed.<br>
 		<iframe width="60%" height="300" src="//jsfiddle.net/morand/ogd9hjs7/embedded/" allowfullscreen="allowfullscreen" frameborder="0"></iframe><br>	
-			'DOMContentLoaded' is signaled to execute when our HTML page loads.  Our JavaScript program is listenting to hear this 
+			<br>'DOMContentLoaded' is signaled to execute when our HTML page loads.  Our JavaScript program is listenting to hear this 
 		signal by adding 'addEventListener' onto our document.  When our paramater 'DOMContentLoaded' fires, we call 
 		another function 'bindButtons()', to begin our program.  <br>
 		For our next line of code, we define our bindButtons method that was just called in the previous line:	
-		<iframe width="60%" height="300" src="//jsfiddle.net/morand/r5s1594u/9/embedded/" allowfullscreen="allowfullscreen" frameborder="0"></iframe>		<br>	Now we create an XMLHttpRequest() request object:
+		<iframe width="60%" height="300" src="//jsfiddle.net/morand/r5s1594u/9/embedded/" allowfullscreen="allowfullscreen" frameborder="0"></iframe>		
+			<br><br>Now we create an XMLHttpRequest() request object:<br>
 		<div><iframe width="60%" height="300" src="//jsfiddle.net/morand/r5s1594u/8/embedded/" allowfullscreen="allowfullscreen" frameborder="0"></iframe><br></div>
-		The XMLHttpRequest is actually an API itself that allows 
+		<br>The XMLHttpRequest is actually an API itself that allows 
 		data to be transferred to and from the server. This enables a web page to update a portion
-		of the page without disrupting what the user is doing.  </br>
+		of the page without disrupting what the user is doing.  <br><br>
 		Onto the next line: <div>  
 	
 		<iframe width="60%" height="300" src="//jsfiddle.net/morand/r5s1594u/7/embedded/" allowfullscreen="allowfullscreen" frameborder="0"></iframe>	<br></div>	
-		<div>
+		<div><br>
 		Here we declare an object (payload) that will carry our parameters to the API.  Our payload is the object we want 
 		to deliver to the API. On the right hand side, we have "{url: null}".  We need to use "url" as our key here, 
 		as Computer Vision API is expecting this exact key.  The key, "url", has its value set to "null" 
@@ -90,7 +91,7 @@
 		Our POST request:
 		
 		<div><iframe width="60%" height="300" src="//jsfiddle.net/morand/r5s1594u/5/embedded/" allowfullscreen="allowfullscreen" frameborder="0"></iframe>	</div>
-		We open our request without reloading the page and specify our method as POST.  
+		<br>We open our request without reloading the page and specify our method as POST.  
 		We then take our request URL, put it inside quotation marks, and follow it with "true" to specify our 
 		request as asynchronous.<br><br>
 		When we call send, our request gets scheduled to be sent. Our program can continue to run while 
@@ -119,8 +120,8 @@
 		In our last bit of code, we close our listener function and then send our request.  
 		We protect our page from reloading with the event.preventDefault() method.<br>
 		<iframe width="60%" height="300" src="//jsfiddle.net/morand/r5s1594u/1/embedded/" allowfullscreen="allowfullscreen" frameborder="0"></iframe>			
-		<br><br>Now that we have a pretty good understanding of how to make requests to our 
-		API, <a href="https://deirdreemoran.github.io/MicrosoftComputerVisionProject/src/requestAnalysis.html" >let's proccess some returned data!</a>
+		<br><br>Now we can proccess some returned data
+		API, <a href="https://deirdreemoran.github.io/MicrosoftComputerVisionProject/src/displayResponse.html" >here</a>!
 
 	</body>
 </html>

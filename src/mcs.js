@@ -37,7 +37,7 @@
 						 var ul = document.getElementById("mylist");
 						 ul.appendChild(li);
 					}
-
+ 
 					var con = response.description.captions["0"].confidence;
 					var tex = response.description.captions["0"].text;
 					var li = document.createElement("li");

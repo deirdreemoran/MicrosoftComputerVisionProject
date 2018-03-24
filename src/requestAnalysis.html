@@ -41,7 +41,7 @@
 				</b>, JSON converts our object (the url with request parameters) into a string 
 				for the server to read.  The method call to <b>JSON.parse </b> converts the 
 			image analysis response that the server sends back to us.  </div>  <br>
-		 <
+		 
 		<h1> Analyze Image </h1>
 		
 		<div>To set up our first parameter, Visual Features, we refer to the API's documentation guide:
@@ -57,7 +57,7 @@
 <i> https://westus.api.cognitive.microsoft.com/vision/v1.0/analyze?visualFeatures=Categories,Tags,Description,Faces,ImageType,Color,Adult&details=Celebrities&language=en</i>
 			</div>
 			<br>
-	Now onto writing a program for our browser that will send an image URL to the API. </br>
+	<div id="normText"> Now onto writing a program for our browser that will send an image URL to the API. </br>
 			<br>We will create and then examine each line of code piece by piece, and then finally combine our
 			lines of code at the very end.  
 			<br>First, we need to communicate with our HTML code in order to collect the image we 
@@ -75,48 +75,49 @@
 	Onto the next line: <div>  
 	<iframe width="60%" height="300" src="//jsfiddle.net/morand/r5s1594u/7/embedded/" allowfullscreen="allowfullscreen" frameborder="0"></iframe>	<br></div>	
 	Here we declare an object (payload) that will carry our parameters to the API.  Our payload is the object we want 
-	to give to the API. On the right hand side, we have "{url: null}".  We need to use "url" as our key here, 
+	to deliver to the API. On the right hand side, we have "{url: null}".  We need to use "url" as our key here, 
 	as Computer Vision API is expecting this exact key.  The key, "url", has its value set to "null" 
-	because we still need to get the url our user enters into the form.  
+	because we still need to get the url we specidy in our form.  
 			 <br>      
 			Now we need to put it all together in our next line of code:
 <iframe width="60%" height="300" src="//jsfiddle.net/morand/r5s1594u/6/embedded/" allowfullscreen="allowfullscreen" frameborder="0"></iframe><br>			
 	  We want to look at our HTML 'document' and get the form field value of the element with the id tag "url".
-	We assign this value to "payload.url".  Now our payload object's key "url" 
-	will contain the value of the url from our form.<br>
+	We assign this value to "payload.url".  Now our payload object's key "url" will contain the value 
+	of the url from our form.<br>
 	Our POST request:
 			<div><iframe width="60%" height="300" src="//jsfiddle.net/morand/r5s1594u/5/embedded/" allowfullscreen="allowfullscreen" frameborder="0"></iframe>	</div>
 	We open our request without reloading the page and specify our method as POST.  
-	We then take our request URL, put it inside quotation marks, and follow it with "true" to specify that our 
+	We then take our request URL, put it inside quotation marks, and follow it with "true" to specify our 
 	request as asynchronous.<br>
 	When we call send, our request gets scheduled to be sent. Our program can continue to run while 
 	the browser sends and receives data in the background.  To get a notification when the server responds,
 	we must listen for the "load" event on the request object.  <br>
-	Now we set our request headers.  The first of which let the MCS server know what type of data we are sending, and the second
-	request header specifies our API subscription key which we created when we initially signed up:
+	Now we set our request headers.  The first of which tells the server what type of data we are sending, and the second
+	request header specifies our API subscription key that was created when we initially signed up:
 			<br>	<iframe width="60%" height="300" src="//jsfiddle.net/morand/r5s1594u/4/embedded/" allowfullscreen="allowfullscreen" frameborder="0"></iframe>      <br>
 	  <div id="normText">			
-			Now back to asynchronicity.  We are attaching another event listener in our next line of code 
-			 to signal us when the response data is ready to be processed.  We haven't actually called our send 
-				method yet, but we need to attach this listener function beforehand so we have something
-				to work with when the response data is available to us:
-			<br>	<iframe width="60%" height="300" src="//jsfiddle.net/morand/r5s1594u/3/embedded/" allowfullscreen="allowfullscreen" frameborder="0"></iframe></div><br>
-			Now we need to set up how we'll handle our response data by addressing status code scenarios.
-			The repsonses are fully documented on the MCS page, so we'll just create the code here and not go into
-			too much depth.   <br><iframe width="60%" height="300" src="//jsfiddle.net/morand/r5s1594u/2/embedded/" allowfullscreen="allowfullscreen" frameborder="0"></iframe><br>
-				I included console.log to help us identify and solve problems in case we run into any while our program executes.  They
-				are not necessary and may be omitted. 
-				As we defined earlier, JSON.parse is taking the server's
-				response (a string) and is dividing it up into content that our browser can read.  It parses
-				the response into an organized object which we will examine in the next section.
-				<br>
-				In our last bit of code, we first close out our listener function and then send our request.  
-				Then we protect our page from reloading with the event.preventDefault() method.<br>
+	Now back to asynchronicity.  We are attaching another event listener in our next line of code 
+	 to signal when the response data is ready to be processed.  We haven't actually called our send 
+	method yet, it's only scheduled at this point.  We need to attach this listener function 
+	 beforehand so we have something to work with when the response data is available to us:
+	<br>	<iframe width="60%" height="300" src="//jsfiddle.net/morand/r5s1594u/3/embedded/" allowfullscreen="allowfullscreen" frameborder="0"></iframe></div><br>
+	Now we need to set up how to handle our response data by addressing different return 
+	status code scenarios.  The repsonse formats are fully documented on the MCS documentation page.
+	<br><iframe width="60%" height="300" src="//jsfiddle.net/morand/r5s1594u/2/embedded/" allowfullscreen="allowfullscreen" frameborder="0"></iframe><br>
+	I included console.log here to help us identify and solve problems by printing out what our process is doing while it
+	executes.
+	They are not necessary and may be omitted. 
+	As we defined earlier, the call to JSON.parse is taking the server's
+	response (a string) and dividing it up into content that our browser can read.  It parses
+	the response into an organized object which we will examine in the next section.
+	<br>
+	In our last bit of code, we close our listener function and then send our request.  
+	We protect our page from reloading with the event.preventDefault() method.<br>
 <iframe width="60%" height="300" src="//jsfiddle.net/morand/r5s1594u/1/embedded/" allowfullscreen="allowfullscreen" frameborder="0"></iframe>			
-				<br>Now that we have a pretty good understanding of how to make requests to our 
-				API, we will proccess some returned data. <br><br>
-		
-<br>
+	<br>Now that we have a pretty good understanding of how to make requests to our 
+	API, let's proccess some returned data. <br><br>
+<a href="https://deirdreemoran.github.io/MicrosoftComputerVisionProject/src/requestAnalysis.html" >. </a>
+
 	
 </body>
 </html>

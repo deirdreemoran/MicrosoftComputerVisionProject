@@ -1,0 +1,92 @@
+body {
+    margin: 60px auto;
+    width: 70%;
+}
+
+h1 {
+    font-size: 3em;
+    font-family:'Helvetica', 'Arial', 'Sans-Serif';
+}
+
+
+
+
+#normText { /*based on githubs editor style*/
+    color: #474747;
+    width:100%;
+    padding:5px 4px;
+    font:12px "SFMono-Regular", Consolas, "Liberation Mono", Menlo, Courier, monospace;
+    resize:vertical;
+    border:0;
+    border-radius:0;
+    outline:none
+}
+
+#results {
+    width:100%;
+    padding:5px 4px;
+    font:1em "SFMono-Regular", Consolas, "Liberation Mono", Menlo, Courier, monospace;
+    resize:vertical;
+    border:0;
+    border-radius:0;
+    outline:none
+    line-height: 2em;
+    color: navy;
+}
+
+ul.posts { 
+    margin: 20px auto 40px; 
+    font-size: 1.5em;
+}
+
+img.keyval{
+     width: 100%;
+    height: 100%;
+}
+#valpairs {
+    width: 100%;
+    height: 100%;
+}
+
+#strawberry {
+    width: 60%;
+    height: 60%
+}
+ul.posts li {
+    list-style: none;
+}
+
+div.indent {
+    text-align: center;
+    color: brown;
+    font-size: .6 em;
+    font-weight: bold;
+}
+
+button {
+    background-color: black;
+    color: white;
+    padding: 14px 25px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font: 1em "SFMono-Regular", Consolas, "Liberation Mono", Menlo, Courier, monospace;
+    border: thin;
+    border-color: grey;
+    float: left;
+    overflow: hidden;
+}
+
+script {
+    width: 100px;
+    height: 50px;
+    float: left;
+}
+
+button:hover{
+    background-color: grey;
+}
+
+div.shrinkMe {
+    font-size: 8px;
+}

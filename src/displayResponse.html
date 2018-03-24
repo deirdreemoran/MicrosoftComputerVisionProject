@@ -13,28 +13,31 @@
 	<form action="" method="get">
   <button class="button" type="submit" >Displaying results</button></form>
 <body>
-<h1> Receiving Data and displaying responses </h1>
-  <div id="normText"> Now that we have successfully sent our data requests, let's take a look at how we might process and display the
-	  response data.  We have only mentioned and referenced our html document once previously, so now we'll take a look at it, as well as the many additions to
-	  our previous 'making calls' program:</div>
+<h1> Displaying image analysis response </h1>
+  <div id="normText"> Now that we have requested image analysis, we need to display the
+	  response data from the API. </div><br>
 	  
 <iframe width="100%" height="300" src="//jsfiddle.net/morand/5ao5shsv/2/embedded/js,html/" allowfullscreen="allowfullscreen" frameborder="0"></iframe><div>
 <div id="normText">	
-	  We've added quite a bit to our making-calls program, but mainly just in the 200 response status section.  What we're basically doing in each block of code is creating a list element by using <b>document.createElement("li") </b> and then assigning it to a variable.  We then set up a string of code that includes the key name, a colon, and then the corresponding value for the pair.  That is then set equal to the textContent of our new variable and then appended to a newly created unorder list element.  While we used a list format in this example, your element could have been a table cell. <br>
-	After creating a list element, we then add a returned value pair to that list element.  Our returned 
-	data was not the easiest for my skill level to handle, but we managed to make it work.  Some of our response data was returned as an array of objects, nested in an object, so that's where most of the lengthiness of the code is coming from.  However, the majority of our processing  and display of returned data took this form, as we just outlined:
+	  We've added quite a bit to our program where we requested image analysis, but 
+	the additions are mostly just listings of the image analysis response.  
+	We set up a string of code that includes the key name, a colon, and then the corresponding value for the pair.  
+	This is then set equal to the textContent of our new variable and appended to a newly created unordered list element.  
+	While we used a list format in this example, your element could have been a table cell, etc. <br><br>
+	After creating a list element, we then add a returned value pair to that list element.  
+	Our response data was returned as an array of objects, nested in an object, so the processing is a little lengthy.  
 <br>	
 	<iframe width="60%" height="300" src="//jsfiddle.net/morand/r5s1594u/10/embedded/" allowfullscreen="allowfullscreen" frameborder="0"></iframe>
 <br>	  
 	  
 	<h1>Try it out!</h1>
-	Find an image url or copy and paste the one below.  Be sure to follow the formatting restrictions listed below.
-	<br> example url:   https://upload.wikimedia.org/wikipedia/en/9/99/Patterson%E2%80%93Gimlin_film_frame_352.jpg
+	Find an image URL or copy and paste in the example URL listed below.  Be sure to follow the formatting restrictions listed below.
+	<br><br> Example URL:   <br>https://upload.wikimedia.org/wikipedia/en/9/99/Patterson%E2%80%93Gimlin_film_frame_352.jpg
 	<br><ul>
     <li>Supported image formats: JPEG, PNG, GIF, BMP.
     <li>Image file size must be less than 4MB.
   <li> Image dimensions must be at least 50 x 50.
-	  <br>
+	  <br><br>
 
 <script src="/mcs.js"></script>
   <style>

@@ -2,7 +2,7 @@
 <html>
 <head>
     <meta charset="utf-8"/></head>
-<title>A How-To Guide for Microsoft Cognitive Services Computer Vision API </title>
+	<title>A How-To Guide for Microsoft Cognitive Services Computer Vision API </title>
 	 <link rel="stylesheet" type="text/css" href="/css/main.css">
 	<form action="https://deirdreemoran.github.io/MicrosoftComputerVisionProject/src/gettingStarted.html" method="get">
 	<button class="button" type="submit" >Getting started</button>
@@ -11,59 +11,57 @@
 		<button class="button" type="submit" >Requesting image analysis</button>
 	</form>
 	<form action="" method="get">
-  <button class="button" type="submit" >Displaying results</button></form>
-<body>
-<h1> Displaying analysis results </h1>
-  <div id="normText"> Now that we have successfully requested image analysis, we need to display the
-	  response data returned from the API. </div>
+ 		 <button class="button" type="submit" >Displaying results</button>
+	</form>
+	<body>
+		<h1> Displaying analysis results </h1>
+  		<div id="normText"> Now that we have successfully requested image analysis, we need to display the
+	  	response data returned from the API. </div>
 	  
-<iframe width="100%" height="300" src="//jsfiddle.net/morand/5ao5shsv/2/embedded/js,html/" allowfullscreen="allowfullscreen" frameborder="0"></iframe><div>
-<div id="normText">	
-	  We've added quite a bit to our program where we requested image analysis, but 
-	the additions are mostly just listings of the image analysis response.  
-	We set up a string of code that includes the key name, a colon, and then the corresponding value for the pair.  
-	This is then set equal to the textContent of our new variable and appended to a newly created unordered list element.  
-	While we used a list format in this example, your element could have been a table cell, etc. <br><br>
-	After creating a list element, we then add a returned value pair to that list element.  
-	Our response data was returned as an array of objects, nested in an object, so the processing is a little lengthy.  
-<br>	
-	<iframe width="60%" height="300" src="//jsfiddle.net/morand/r5s1594u/10/embedded/" allowfullscreen="allowfullscreen" frameborder="0"></iframe>
-<br>	  
-	  
-	<h1>Try it out!</h1>
-	Find an image URL or copy and paste in the example URL listed below.  Be sure to follow the formatting restrictions listed below.
-	<br><br> Example URL:   <br>https://upload.wikimedia.org/wikipedia/en/9/99/Patterson%E2%80%93Gimlin_film_frame_352.jpg
-	<br><ul>
-    <li>Supported image formats: JPEG, PNG, GIF, BMP.
-    <li>Image file size must be less than 4MB.
-  <li> Image dimensions must be at least 50 x 50.
-	  <br><br><br>
-
-<script src="/mcs.js"></script>
-  <style>
-  img {
-  width:50%;
-  height:50%;
-  }
-  </style>
-  <body>
-<form>
-<fieldset>
-        <legend>Enter image url: </legend>
-        <label for="url"></label>
-        <input type="url" name="url" id="url">
-        <input type="submit" id="qSubmit">
-      </fieldset>
-    </form>
-    <div>
-      <h2>Results</h2>
-      <img src="" id="myimg">
-      <ul id="mylist">
-             </ul>
-    </div>
-  </body>
-
-
-
+		<iframe width="100%" height="300" src="//jsfiddle.net/morand/5ao5shsv/2/embedded/js,html/" allowfullscreen="allowfullscreen" frameborder="0"></iframe><div>
+		<div id="normText">	
+		  We've added quite a bit to our program where we requested image analysis, but 
+		the additions are mostly just listings of the image analysis response.  
+		We set up a string of code that includes the key name, a colon, and then the corresponding value for the pair.  
+		This is then set equal to the textContent of our new variable and appended to a newly created unordered list element.  
+		While we used a list format in this example, your element could have been a table cell, etc. <br><br>
+		After creating a list element, we then add a returned value pair to that list element.  
+		Our response data was returned as an array of objects, nested in an object, so the processing is a little lengthy.  
+		<br>	
 	
+		<iframe width="60%" height="300" src="//jsfiddle.net/morand/r5s1594u/10/embedded/" allowfullscreen="allowfullscreen" frameborder="0"></iframe>
+		<br>	  
+	  
+		<h1>Try it out!</h1>
+		Find an image URL or copy and paste in the example URL listed below.  Be sure to follow the formatting restrictions listed below.
+		<br><br> Example URL:   <br>https://upload.wikimedia.org/wikipedia/en/9/99/Patterson%E2%80%93Gimlin_film_frame_352.jpg
+		<br><ul>
+		<li>Supported image formats: JPEG, PNG, GIF, BMP.
+		<li>Image file size must be less than 4MB.
+		<li> Image dimensions must be at least 50 x 50.
+		<br><br><br>
+
+		<script src="/mcs.js"></script>
+		 <style>
+		 img {
+		 	width:50%;
+		 	height:50%;
+		 }
+		 </style>
+		 <body>
+		<form>
+		<fieldset>
+			<legend>Enter image url: </legend>
+			<label for="url"></label>
+			<input type="url" name="url" id="url">
+			<input type="submit" id="qSubmit">
+		</fieldset>
+		</form>
+		<div>
+		<h2>Results</h2>
+		<img src="" id="myimg">
+		<ul id="mylist">
+		</ul>
+    		</div>
+  	</body>
 </html>

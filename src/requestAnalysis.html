@@ -1,126 +1,249 @@
 <!DOCTYPE html>
 <html>
 	<head>
-    		<meta charset="utf-8"/>
-    		<title>MCS Computer Vision API: Requesting image analysis </title>
-  		<link rel="stylesheet" type="text/css" href="https://deirdreemoran.github.io/MicrosoftComputerVisionProject/css/main.css">
-	</head> 
-	
-	<form action="https://deirdreemoran.github.io/MicrosoftComputerVisionProject/src/gettingStarted.html" method="get">
-		<button class="button" type="submit" >Getting started</button>
-	 </form>
-	<form action="" method="get">
-		<button class="button" type="submit" >Requesting image analysis</button>
-	</form>
-	<form action="https://deirdreemoran.github.io/MicrosoftComputerVisionProject/src/displayResponse.html" method="get">
-  		<button class="button" type="submit" >Displaying results</button>
-	</form>
-	<br>
-	<body>
-		<h1> Requesting image analysis </h1>
-		<div id="normText"> <h2>Terminology</h2>
-	 	<div><b>Request parameters</b> are defined by the API and tell the user what kind of data may be requested. 
-		Common parameters in the Computer Vision API include image size, content, and language.  </div><br>
-	
-		<div><b> Key-value pairs </b> define the specified request parameters.  For example, to specify our language of
-		choice, the key is set as "language" and its value is set as "en" to indicate English language.  
-		</div><br>
-		
-		<div><b>Request URL </b>is the API's address.  Our request parameters will be included in the request url
-		as key value pairs.  The basic anatomy of a request url is illustrated below.<br>
-		<img src="https://deirdreemoran.github.io/MicrosoftComputerVisionProject/images/keyvalpairs.png" id="valpairs"><br>
-		Request URLs are listed on the API documentation page.  <br>
-		</div><br>
-		<b> POST and GET methods </b>are HTTP request methods.  A GET method basically requests data from the API,
-		whereas a POST method processes data it is sent.   In our case, we are using a POST request, as we
-		will be sending parameters and an image to the API. <br>
-			
-		<div> <br><b>JSON (JavaScript Object Notation) </b> translates the data we send from our browser to API server, and vice versa.
-		JSON acts as an interpreter between the two end points.  When we call <b>JSON.stringify()
-		</b>, JSON converts our object (the url with request parameters) into a string 
-		for the server to read.  The method call to <b>JSON.parse </b> converts the 
-		image analysis response that the server sends back to us.  
-		</div>  <br>
-		 
-		<h1> Analyze Image </h1>
-		
-		<div>To set up our first parameter, Visual Features, we refer to the API's
-		<a href="https://westus.dev.cognitive.microsoft.com/docs/services/56f91f2d778daf23d8ec6739/operations/56f91f2e778daf14a499e1fa" >documentation guide.</a>
-		For our example, we are going to include all Visual Features.  To set up our Request URL, our 
-		<b> key </b> is'visualFeatures' and our values are 'Categories,Tags,Description,Faces,ImageType,Color,Adult'.
-		For the second key, 'details', we list it immediately after the last "visualFeatures" value, 
-		separated by an ampersand, like so:
-		<br><br><i> <b>https://westus.api.cognitive.microsoft.com/vision/v1.0/analyze?visualFeatures=Categories,Tags,Description,Faces,ImageType,Color,Adult&details=Celebrities</div>
-			</i></b><br>
-		For our last key, 'language', we'll list its key-value pair at the very end, specifying the value 
-		'en' for English and also separate it from the previous key value pair with an ampersand:<br><br>
-		<i><b> https://westus.api.cognitive.microsoft.com/vision/v1.0/analyze?visualFeatures=Categories,Tags,Description,Faces,ImageType,Color,Adult&details=Celebrities&language=en</i>
-			</b></div>
-		
-		<br>
-		<div id="normText"> Now onto writing a program that will send an image URL to the API.  We will 
-		create and then examine each line of code piece by piece, and then finally combine our
-		lines of code at the very end.  
-		<br><br>To begin, we need to communicate with our HTML code in order to send the image we 
-		would like to have analyzed.<br>
-		<iframe width="60%" height="300" src="//jsfiddle.net/morand/ogd9hjs7/embedded/" allowfullscreen="allowfullscreen" frameborder="0"></iframe><br>	
-			<br>'DOMContentLoaded' is signaled to execute when our HTML page loads.  Our JavaScript program is listenting to hear this 
-		signal by adding 'addEventListener' onto our document.  When our paramater 'DOMContentLoaded' fires, we call 
-		another function 'bindButtons()', to begin our program.  <br>
-		For our next line of code, we define our bindButtons method that was just called in the previous line:	
-		<iframe width="60%" height="300" src="//jsfiddle.net/morand/r5s1594u/9/embedded/" allowfullscreen="allowfullscreen" frameborder="0"></iframe>		
-			<br><br>Now we create an XMLHttpRequest() request object:<br>
-		<div><iframe width="60%" height="300" src="//jsfiddle.net/morand/r5s1594u/8/embedded/" allowfullscreen="allowfullscreen" frameborder="0"></iframe><br></div>
-		<br>The XMLHttpRequest is actually an API itself that allows 
-		data to be transferred to and from the server. This enables a web page to update a portion
-		of the page without disrupting what the user is doing.  <br><br>
-		Onto the next line: <div>  
-	
-		<iframe width="60%" height="300" src="//jsfiddle.net/morand/r5s1594u/7/embedded/" allowfullscreen="allowfullscreen" frameborder="0"></iframe>	<br></div>	
-		<div><br>
-		Here we declare an object (payload) that will carry our parameters to the API.  Our payload is the object we want 
-		to deliver to the API. On the right hand side, we have "{url: null}".  We need to use "url" as our key here, 
-		as Computer Vision API is expecting this exact key.  The key, "url", has its value set to "null" 
-		because we still need to get the url we specidy in our form.  
-		Now we need to put it all together in our next line of code:<br>
-		<iframe width="60%" height="300" src="//jsfiddle.net/morand/r5s1594u/6/embedded/" allowfullscreen="allowfullscreen" frameborder="0"></iframe><br>			
-	  	<br>We want to look at our HTML 'document' and get the form field value of the element with the id tag "url".
-		We assign this value to "payload.url".  Now our payload object's key "url" will contain the value 
-		of the url from our form.<br>
-		Our POST request:
-		
-		<div><iframe width="60%" height="300" src="//jsfiddle.net/morand/r5s1594u/5/embedded/" allowfullscreen="allowfullscreen" frameborder="0"></iframe>	</div>
-		<br>We open our request without reloading the page and specify our method as POST.  
-		We then take our request URL, put it inside quotation marks, and follow it with "true" to specify our 
-		request as asynchronous.<br><br>
-		When we call send, our request gets scheduled to be sent. Our program can continue to run while 
-		the browser sends and receives data in the background.  To get a notification when the server responds,
-		we must listen for the "load" event on the request object.  <br><br>
-		Now we set our request headers.  The first of which tells the server what type of data we are sending, and the second
-		request header specifies our API subscription key that was created when we initially signed up:<br>
-		<iframe width="60%" height="300" src="//jsfiddle.net/morand/r5s1594u/4/embedded/" allowfullscreen="allowfullscreen" frameborder="0"></iframe>      <br>
-	  
-		<div id="normText">	<br>		
-		Now back to asynchronicity.  We are attaching another event listener in our next line of code 
-		to signal when the response data is ready to be processed.  We haven't actually called our send 
-		method yet, it's only scheduled at this point.  We need to attach this listener function 
-		beforehand so we have something to work with when the response data is available to us:
-		<iframe width="60%" height="300" src="//jsfiddle.net/morand/r5s1594u/3/embedded/" allowfullscreen="allowfullscreen" frameborder="0"></iframe></div><br>
-		Now we need to set up how to handle our response data by addressing different return 
-		status code scenarios.  The repsonse formats are fully documented on the MCS documentation page.
-		<iframe width="60%" height="300" src="//jsfiddle.net/morand/r5s1594u/2/embedded/" allowfullscreen="allowfullscreen" frameborder="0"></iframe><br>
-		<br>I included console.log here to help us identify and solve problems by printing out what our process is doing while it
-		executes.
-		They are not necessary and may be omitted. 
-		As we defined earlier, the call to JSON.parse is taking the server's
-		response (a string) and dividing it up into content that our browser can read.  It parses
-		the response into an organized object which we will examine in the next section.
-		<br><br>
-		In our last bit of code, we close our listener function and then send our request.  
-		We protect our page from reloading with the event.preventDefault() method.<br>
-		<iframe width="60%" height="300" src="//jsfiddle.net/morand/r5s1594u/1/embedded/" allowfullscreen="allowfullscreen" frameborder="0"></iframe>			
-		<br><br>Now onto processing returned data 
-		<a href="https://deirdreemoran.github.io/MicrosoftComputerVisionProject/src/displayResponse.html" >here</a>!
 
-	</body>
+<meta charset="utf-8"/>
+
+<title>MCS Computer Vision API: Requesting image analysis </title>
+
+<link rel="stylesheet" type="text/css" href="https://deirdreemoran.github.io/MicrosoftComputerVisionProject/css/main.css">
+
+</head> 
+
+
+
+<form action="https://deirdreemoran.github.io/MicrosoftComputerVisionProject/src/gettingStarted.html" method="get">
+
+<button class="button" type="submit" >Getting started</button>
+
+</form>
+
+<form action="" method="get">
+
+<button class="button" type="submit" >Requesting image analysis</button>
+
+</form>
+
+<form action="https://deirdreemoran.github.io/MicrosoftComputerVisionProject/src/displayResponse.html" method="get">
+
+<button class="button" type="submit" >Displaying results</button>
+
+</form>
+
+<br>
+
+<body>
+
+<h1> Requesting image analysis </h1>
+
+<div id="normText"> <h2>Terminology</h2>
+
+<div><b>Request parameters</b> are defined by the API and tell the user what kind of data may be requested. 
+
+Common parameters in the Computer Vision API include image size, content, and language. </div><br>
+
+
+
+<div><b> Key-value pairs </b> define the specified request parameters. For example, to specify our language of
+
+choice, the key is set as "language" and its value is set as "en" to indicate English language. 
+
+</div><br>
+
+
+
+<div><b>Request URL </b>is the API's address. Our request parameters will be included in the request url
+
+as key value pairs. The basic anatomy of a request url is illustrated below.<br>
+
+<img src="https://deirdreemoran.github.io/MicrosoftComputerVisionProject/images/keyvalpairs.png" id="valpairs"><br>
+
+Request URLs are listed on the API documentation page. <br>
+
+</div><br>
+
+<b> POST and GET methods </b>are HTTP request methods. A GET method basically requests data from the API,
+
+whereas a POST method processes data it is sent. In our case, we are using a POST request, as we
+
+will be sending parameters and an image to the API. <br>
+
+
+
+<div> <br><b>JSON (JavaScript Object Notation) </b> translates the data we send from our browser to API server, and vice versa.
+
+JSON acts as an interpreter between the two end points. When we call <b>JSON.stringify()
+
+</b>, JSON converts our object (the url with request parameters) into a string 
+
+for the server to read. The method call to <b>JSON.parse </b> converts the 
+
+image analysis response that the server sends back to us. 
+
+</div> <br>
+
+
+
+<h1> Analyze Image </h1>
+
+
+
+<div>To set up our first parameter, Visual Features, we refer to the API's
+
+<a href="https://westus.dev.cognitive.microsoft.com/docs/services/56f91f2d778daf23d8ec6739/operations/56f91f2e778daf14a499e1fa" >documentation guide.</a>
+
+For our example, we are going to include all Visual Features. To set up our Request URL, our 
+
+<b> key </b> is'visualFeatures' and our values are 'Categories,Tags,Description,Faces,ImageType,Color,Adult'.
+
+For the second key, 'details', we list it immediately after the last "visualFeatures" value, 
+
+separated by an ampersand, like so:
+
+<br><br><i> <b>https://westus.api.cognitive.microsoft.com/vision/v1.0/analyze?visualFeatures=Categories,Tags,Description,Faces,ImageType,Color,Adult&details=Celebrities</div>
+
+</i></b><br>
+
+For our last key, 'language', we'll list its key-value pair at the very end, specifying the value 
+
+'en' for English and separate it from the previous key value pair with an ampersand:<br><br>
+
+<i><b> https://westus.api.cognitive.microsoft.com/vision/v1.0/analyze?visualFeatures=Categories,Tags,Description,Faces,ImageType,Color,Adult&details=Celebrities&language=en</i>
+
+</b></div>
+
+
+
+<br>
+
+<div id="normText"> Now onto writing a program that will send an image URL to the API. We will 
+
+create and then examine each line of code piece by piece, and then finally combine our
+
+lines of code at the very end. 
+
+<br><br>To begin, we need to communicate with our HTML code to send the image we 
+
+would like to have analyzed.<br>
+
+<iframe width="60%" height="300" src="//jsfiddle.net/morand/ogd9hjs7/embedded/" allowfullscreen="allowfullscreen" frameborder="0"></iframe><br> 
+
+<br>'DOMContentLoaded' is signaled to execute when our HTML page loads. Our JavaScript program is listening to hear this 
+
+signal by adding 'addEventListener' onto our document. When our parameter 'DOMContentLoaded' fires, we call 
+
+another function 'bindButtons()', to begin our program. <br>
+
+For our next line of code, we define our bindButtons method that was just called in the previous line: 
+
+<iframe width="60%" height="300" src="//jsfiddle.net/morand/r5s1594u/9/embedded/" allowfullscreen="allowfullscreen" frameborder="0"></iframe> 
+
+<br><br>Now we create an XMLHttpRequest() request object:<br>
+
+<div><iframe width="60%" height="300" src="//jsfiddle.net/morand/r5s1594u/8/embedded/" allowfullscreen="allowfullscreen" frameborder="0"></iframe><br></div>
+
+<br>The XMLHttpRequest is an API itself that allows 
+
+data to be transferred to and from the server. This enables a web page to update a portion
+
+of the page without disrupting what the user is doing. <br><br>
+
+Onto the next line: <div> 
+
+
+
+<iframe width="60%" height="300" src="//jsfiddle.net/morand/r5s1594u/7/embedded/" allowfullscreen="allowfullscreen" frameborder="0"></iframe> <br></div> 
+
+<div><br>
+
+Here we declare an object (payload) that will carry our parameters to the API. Our payload is the object we want 
+
+to deliver to the API. On the right-hand side, we have "{url: null}". We need to use "url" as our key here, 
+
+as Computer Vision API is expecting this exact key. The key, "url", has its value set to "null" 
+
+because we still need to get the url we specify in our form. 
+
+Now we need to put it all together in our next line of code:<br>
+
+<iframe width="60%" height="300" src="//jsfiddle.net/morand/r5s1594u/6/embedded/" allowfullscreen="allowfullscreen" frameborder="0"></iframe><br> 
+
+<br>We want to look at our HTML 'document' and get the form field value of the element with the id tag "url".
+
+We assign this value to "payload.url". Now our payload object's key "url" will contain the value 
+
+of the url from our form.<br>
+
+Our POST request:
+
+
+
+<div><iframe width="60%" height="300" src="//jsfiddle.net/morand/r5s1594u/5/embedded/" allowfullscreen="allowfullscreen" frameborder="0"></iframe> </div>
+
+<br>We open our request without reloading the page and specify our method as POST. 
+
+We then take our request URL, put it inside quotation marks, and follow it with "true" to specify our 
+
+request as asynchronous.<br><br>
+
+When we call send, our request gets scheduled to be sent. Our program can continue to run while 
+
+the browser sends and receives data in the background. To get a notification when the server responds,
+
+we must listen for the "load" event on the request object. <br><br>
+
+Now we set our request headers. The first of which tells the server what type of data we are sending, and the second
+
+request header specifies our API subscription key that was created when we initially signed up:<br>
+
+<iframe width="60%" height="300" src="//jsfiddle.net/morand/r5s1594u/4/embedded/" allowfullscreen="allowfullscreen" frameborder="0"></iframe> <br>
+
+
+
+<div id="normText"> <br> 
+
+Now back to asynchronicity. We are attaching another event listener in our next line of code 
+
+to signal when the response data is ready to be processed. We haven't called our send 
+
+method yet, it's only scheduled at this point. We need to attach this listener function 
+
+beforehand so we have something to work with when the response data is available to us:
+
+<iframe width="60%" height="300" src="//jsfiddle.net/morand/r5s1594u/3/embedded/" allowfullscreen="allowfullscreen" frameborder="0"></iframe></div><br>
+
+Now we need to set up how to handle our response data by addressing different return 
+
+status code scenarios. The response formats are fully documented on the MCS documentation page.
+
+<iframe width="60%" height="300" src="//jsfiddle.net/morand/r5s1594u/2/embedded/" allowfullscreen="allowfullscreen" frameborder="0"></iframe><br>
+
+<br>I included console.log here to help us identify and solve problems by printing out what our process is doing while it
+
+executes.
+
+They are not necessary and may be omitted. 
+
+As we defined earlier, the call to JSON.parse is taking the server's
+
+response (a string) and dividing it up into content that our browser can read. It parses
+
+the response into an organized object which we will examine in the next section.
+
+<br><br>
+
+In our last bit of code, we close our listener function and then send our request. 
+
+We protect our page from reloading with the event.preventDefault() method.<br>
+
+<iframe width="60%" height="300" src="//jsfiddle.net/morand/r5s1594u/1/embedded/" allowfullscreen="allowfullscreen" frameborder="0"></iframe> 
+
+<br><br>Now onto processing returned data 
+
+<a href="https://deirdreemoran.github.io/MicrosoftComputerVisionProject/src/displayResponse.html" >here</a>!
+
+
+
+</body>
+
 </html>

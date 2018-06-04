@@ -108,6 +108,10 @@
 					var response = JSON.parse(req.responseText);
 					console.log(response.code + " " + response.message);
 				}
+			  	if(req.status == 404){
+					var response = JSON.parse(req.responseText);
+					console.log(response.code + " " + response.message);
+				}
 		   });
            req.send(JSON.stringify(payload));
            event.preventDefault();
